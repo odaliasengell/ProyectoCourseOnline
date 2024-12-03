@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= game.title %></title>
+    <link rel="stylesheet" href="/css/show.css"> <!-- Ajusta según tu estructura -->
+</head>
+<body>
+    <header>
+        <h1><%= game.title %></h1>
+        <nav>
+            <a href="/">Volver al Catálogo</a>
+        </nav>
+    </header>
+    <div>
+        <img src="/images/<%= game.image %>" alt="<%= game.title %>" class="game-image" />
+        <p><strong>Descripción:</strong> <%= game.description %></p>
+        <p><strong>Precio:</strong> $<%= game.price %></p>
+        <p><strong>Fecha de Lanzamiento:</strong> <%= game.releaseDate %></p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Catálogo de Juegos. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

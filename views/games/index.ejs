@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Videojuegos</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Título de la página como enlace -->
+  <header>
+    <h1>
+      <a href="/games" style="text-decoration: none; color: inherit;">Catálogo de Videojuegos</a>
+    </h1>
+  </header>
+
+  <!-- Barra de búsqueda y filtro -->
+  <div class="search-filter">
+    <form action="/games" method="GET"> <!-- Cambié aquí la acción a /games -->
+      <!-- Barra de búsqueda -->
+      <input type="text" name="query" placeholder="Buscar juegos..." required>
+
+      <!-- Filtro por precio o fecha de lanzamiento -->
+      <select name="filter">
+        <option value="all">Todos</option>
+        <option value="priceAsc">Precio: Menor a mayor</option>
+        <option value="priceDesc">Precio: Mayor a menor</option>
+        <option value="newest">Más recientes</option>
+        <option value="oldest">Más antiguos</option>
+      </select>
+
+      <!-- Botón de búsqueda -->
+      <button type="submit">Buscar</button>
+    </form>
+  </div>
+
+  <!-- Catálogo de juegos -->
+  <div class="game-catalog">
+    <% games.forEach(game => { %>
+    <div class="game-card">
+      <img src="/images/<%=game.image %>" alt="<%= game.title %>" class="game-image" />
+      <div class="game-info">
+        <h2><%= game.title %></h2>
+        <p class="description"><%= game.description %></p>
+        <p class="price">Precio: $<%= game.price %></p>
+        <p class="release-date">Fecha de lanzamiento: <%= game.releaseDate %></p>
+        <a href="/games/<%= game.id %>" class="game-details-btn">Ver detalles</a>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+
+  <!-- Botón para agregar nuevo juego -->
+  <div class="add-game">
+    <a href="/games/create" class="add-game-btn">Agregar nuevo juego</a> <!-- Cambié la ruta para agregar juegos -->
+  </div>
+
+</body>
+</html>

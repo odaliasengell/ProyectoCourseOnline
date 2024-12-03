@@ -1,0 +1,84 @@
+/* Estructura general */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e3f; /* Color de fondo oscuro */
+    color: #fff; /* Color del texto */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Encabezado */
+header {
+    background-color: #2e2e5b; /* Color de fondo del encabezado */
+    width: 100%; /* Ancho completo */
+    padding: 20px 0; /* Espaciado interno */
+    text-align: center; /* Centrar el texto */
+}
+
+/* Título del juego */
+header h1 {
+    margin: 0;
+    font-size: 2em; /* Tamaño de fuente del título */
+    color: #f9ca24; /* Color del título */
+}
+
+/* Navegación */
+nav a {
+    color: #f9ca24; /* Color del texto de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: bold; /* Texto en negrita */
+    margin-top: 10px; /* Espaciado superior */
+    display: inline-block; /* Para poder añadir margen */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Subrayar en hover */
+}
+
+/* Contenedor de detalles del juego */
+div {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 20px; /* Margen alrededor del contenedor */
+    padding: 20px; /* Espaciado interno */
+    background-color: #2e2e5b; /* Fondo del contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
+
+/* Imagen del juego */
+.game-image {
+    width: 100%; /* Ancho completo */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio debajo de la imagen */
+}
+
+/* Estilos para los párrafos */
+p {
+    margin: 10px 0; /* Espaciado en los párrafos */
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #2e2e5b; /* Color de fondo del pie de página */
+    color: #fff; /* Color del texto del pie de página */
+    padding: 10px 0; /* Espaciado interno */
+    text-align: center; /* Centrar el texto del pie de página */
+    width: 100%; /* Ancho completo */
+    position: relative; /* Posición relativa para el pie de página */
+    bottom: 0; /* Fijar al fondo */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.5em; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
+
+    div {
+        padding: 10px; /* Espaciado interno reducido en pantallas pequeñas */
+    }
+}
