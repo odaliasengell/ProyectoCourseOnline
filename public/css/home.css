@@ -1,0 +1,256 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F7D6E0; /* Fondo rosado claro */
+    color: #FFF; /* Texto blanco */
+}
+
+header.top-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #F497B6;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo-container h1 {
+    font-size: 28px;
+    color: #FFF5F7;
+}
+
+nav.top-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+nav.top-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav.top-nav ul li {
+    font-size: 20px;
+}
+
+nav.top-nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 10px 0;
+}
+
+nav.top-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.profile-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* Contenido principal */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 80px);
+    padding: 0 40px;
+}
+
+.slogan-container {
+    max-width: 600px;
+    margin-left: 150px;
+}
+
+.slogan-text {
+    font-size: 50px;
+    line-height: 1.2;
+    text-align: left;
+    color: #FFF;
+}
+
+.highlight {
+    color: #FF6F91;
+}
+
+.image-container {
+    margin-left: auto;
+}
+
+.image-container img {
+    max-width: 500px;
+    height: auto;
+    border-radius: 20px;
+    transition: transform 0.3s, opacity 0.3s; /* Agregar transición */
+}
+
+.image-container img:hover {
+    transform: scale(1.05); /* Ampliar ligeramente */
+    opacity: 0.9; /* Disminuir opacidad */
+}
+
+/* Estilo del botón */
+.button-container {
+    margin-top: 20px; /* Espacio encima del botón */
+}
+
+.button {
+    display: inline-block;
+    background-color: #FF6F91;
+    color: #FFF;
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s; /* Agregando transform */
+}
+
+.button:hover {
+    background-color: #F497B6;
+    transform: scale(1.05); /* Aumentar el tamaño ligeramente */
+}
+
+/* Características */
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+}
+
+.feature {
+    background-color: #F497B6;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 30%;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    margin: 10px 0;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #FFF;
+}
+
+/* Cursos Relevantes */
+.relevant-courses-container {
+    padding: 40px;
+    background-color: #FFC1E3;
+    text-align: center;
+}
+
+.relevant-courses-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.course {
+    background-color: #F497B6;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s; /* Agregando transform */
+}
+
+.course:hover {
+    transform: scale(1.05); /* Aumentar el tamaño ligeramente */
+}
+
+.course-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.course h3 {
+    margin-top: 10px;
+    color: #FFF;
+}
+
+/* Testimonios */
+.testimonials-container {
+    padding: 40px;
+    background-color: #FF6F91;
+    color: #FFF;
+}
+
+.testimonial {
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Pie de página */
+footer {
+    background-color: #F497B6;
+    padding: 20px;
+    text-align: center;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+footer nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Mover hacia abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Volver a su posición original */
+    }
+}
+
+.slogan-container, .features-container, .relevant-courses-container, .testimonials-container {
+    animation: fadeIn 0.5s ease-in; /* Animación al aparecer */
+}
+
+/* Para agregar un pequeño retardo */
+.features-container, .relevant-courses-container, .testimonials-container {
+    animation-delay: 0.2s; /* Retardo para que no aparezcan todos a la vez */
+}

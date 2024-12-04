@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="/css/register.css">
+<script type="module" src="/js/register.js"></script>
+</head>
+<body>
+    <!-- Contenedor principal para el formulario de registro -->
+    <div class="register-container">
+        <div class="register-box">
+            <div class="register-left">
+                <img src="../Imagenes/Logo.png" alt="Logo" class="logo">
+                <h2>Bienvenido</h2>
+            </div>
+            <div class="register-right">
+                <h2>Registro</h2>
+                <form action="#">
+                    <div class="input-group">
+                        <label for="full-name">Nombre</label>
+                        <input type="text" id="full-name" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="username-register">Usuario</label>
+                        <input type="text" id="username-register" placeholder="Usuario" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password-register">Contraseña</label>
+                        <input type="password" id="password-register" placeholder="Contraseña" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirm-password">Confirmar</label>
+                        <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Correo</label>
+                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <button type="submit" class="btn register-btn">Registrarse</button>
+                </form>
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

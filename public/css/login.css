@@ -1,0 +1,107 @@
+/* Estilo General */
+body {
+  background-color: #ffe0ee; /* Color de fondo general */
+  font-family: Arial, sans-serif; /* Fuente */
+  display: flex; /* Usar flexbox para centrar el contenedor principal */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  margin: 0; /* Sin margen */
+}
+
+.login-container {
+  display: flex; /* Usar flexbox para alinear los elementos */
+  background: white; /* Fondo blanco para la "cajita" */
+  border-radius: 20px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra para efecto de cajita */
+  overflow: hidden; /* Evita que los elementos sobresalgan de la cajita */
+}
+
+/* Lado Izquierdo */
+.login-left {
+  flex: 1; /* Ocupa una parte igual de la pantalla */
+  background: linear-gradient(to right, #d5408e, #ffa0cd); /* Degradado de colores */
+  color: white; /* Color del texto */
+  padding: 40px; /* Espaciado interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: flex-start; /* Alinea elementos a la izquierda */
+}
+
+.login-left h1 {
+  font-size: 2.5rem; /* Tamaño del encabezado */
+  margin-bottom: 20px; /* Espaciado debajo del encabezado */
+}
+
+.login-left p {
+  font-size: 1rem; /* Tamaño del texto */
+}
+
+/* Ajustar el tamaño del logo */
+.logo {
+  width: 100px; /* Cambia este valor para ajustar el tamaño del logo */
+  height: auto; /* Mantiene la proporción del logo */
+}
+
+/* Lado Derecho */
+.login-right {
+  flex: 1; /* Ocupa la otra parte de la pantalla */
+  padding: 40px; /* Espaciado interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+}
+
+.input-group {
+  margin-bottom: 20px; /* Espacio entre campos */
+}
+
+.input-group label {
+  font-weight: bold; /* Texto en negrita */
+}
+
+.input-group input {
+  width: 100%; /* Campos ocupan todo el ancho */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ddd; /* Borde del campo */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Botones */
+.buttons {
+  display: flex; /* Usar flexbox para alinear botones */
+  justify-content: space-between; /* Espacio entre botones */
+}
+
+.btn {
+  padding: 10px 20px; /* Espaciado interno de los botones */
+  border: none; /* Sin borde */
+  border-radius: 7px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de puntero en hover */
+  font-size: 1rem; /* Tamaño de fuente de los botones */
+}
+
+.btn.login {
+  background-color: #c93384; /* Color de fondo del botón de ingresar */
+  color: white; /* Color del texto del botón */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.btn.login:hover {
+  background-color: #0097e6; /* Color de fondo en hover */
+}
+
+.btn.signup {
+  background-color: #fff; /* Color de fondo del botón de registrarse */
+  color: #e14c99; /* Color del texto */
+  border: 2px solid #ffa0cd; /* Borde azul */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.btn.signup:hover {
+  background-color: #00a8ff; /* Color de fondo en hover */
+  color: white; /* Color del texto en hover */
+}
+
+

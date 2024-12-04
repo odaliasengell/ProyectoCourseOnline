@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal de Cursos en Línea</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <script type="module" src="/js/home.js"></script>
+</head>
+<body>
+    <header class="top-panel">
+        <div class="logo-container">
+            <img src="/Imagenes/logo.png" alt="Logo" class="logo">
+            <h1>Online Course</h1>
+        </div>
+        <nav class="top-nav">
+            <ul>
+                <!-- Modificado para enlazar correctamente con la ruta de login -->
+                <li><a href="/login">Ingreso</a></li>
+                <!-- Modificado para enlazar correctamente con la ruta de registro -->
+                <li><a href="/register">Registro</a></li>
+                <li><a href="/categories">Cursos</a></li>
+                <li><a href="/profile" class="profile-icon"><img src="/Imagenes/fotoperfil.png" alt="Perfil" class="profile-img"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="slogan-container">
+            <h2 class="slogan-text">
+                <span class="line">Aprende <span class="highlight">nuevas</span></span>
+                <span class="line"><span class="highlight">habilidades</span> con nuestros</span>
+                <span class="line">cursos en línea</span>
+            </h2>
+
+            <!-- Botón para ver cursos relevantes, justo debajo del eslogan -->
+            <div class="button-container">
+                <a href="#relevant-courses" class="button">Ver Cursos Relevantes</a>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <img src="/Imagenes/Curso.png" alt="Imagen representativa">
+        </div>
+    </div>
+
+    <!-- Sección de Cursos Relevantes -->
+    <div id="relevant-courses" class="relevant-courses-container">
+        <h2>Cursos Relevantes</h2>
+        <div class="courses-grid">
+            <div class="course">
+                <img src="/Imagenes/marketing.jpg" alt="Curso 1" class="course-image">
+                <h3>Curso de Marketing</h3>
+            </div>
+            <div class="course">
+                <img src="/Imagenes/Desarrollo.jpg" alt="Curso 2" class="course-image">
+                <h3>Curso de Desarrollo</h3>
+            </div>
+            <div class="course">
+                <img src="/Imagenes/diseño.jpg" alt="Curso 3" class="course-image">
+                <h3>Curso de Diseño</h3>
+            </div>
+            <div class="course">
+                <img src="/Imagenes/fotografia.jpg" alt="Curso 4" class="course-image">
+                <h3>Curso de Fotografía</h3>
+            </div>
+            <div class="course">
+                <img src="/Imagenes/negocios.jpg" alt="Curso 5" class="course-image">
+                <h3>Curso de Negocios</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Testimonios -->
+    <div class="testimonials-container">
+        <h2>Testimonios de Estudiantes</h2>
+        <div class="testimonial">
+            <p>"Los cursos son excelentes y muy accesibles. He aprendido mucho en poco tiempo!"</p>
+            <p>- Estudiante 1</p>
+        </div>
+        <div class="testimonial">
+            <p>"La plataforma es fácil de usar y me encanta poder estudiar a mi propio ritmo."</p>
+            <p>- Estudiante 2</p>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Online Course. Todos los derechos reservados.</p>
+        <nav>
+            <ul>
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos de Servicio</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+</html>

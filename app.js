@@ -1,42 +1,42 @@
 const express = require('express');
-const path = require('path');
-const fs = require('fs'); // Importa fs para manejar archivos
 const app = express();
-const gameRoutes = require('./routes/games');
+const path = require('path');
+
+// Configura Express para servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configura el motor de vistas
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views')); // Asegúrate de que esto esté correcto
+app.set('views', path.join(__dirname, 'views'));
 
-// Middleware para manejar datos del formulario
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// Middleware para servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Función para cargar juegos desde el archivo JSON
-function loadGames() {
-    const data = fs.readFileSync(path.join(__dirname, 'models', 'games.json'), 'utf-8');
-    return JSON.parse(data);
-}
-
-// Ruta para la página principal que renderiza index.ejs
+// Ruta para la página principal
 app.get('/', (req, res) => {
-    const games = loadGames(); // Carga los juegos desde el archivo JSON
-    res.render('games/index', { games }); // Renderiza index.ejs y pasa la variable games
+    res.render('pagina/home'); // Renderiza home.ejs
 });
 
-// Usar las rutas de juegos
-app.use('/games', gameRoutes);
+// Ruta para la página de login
+app.get('/login', (req, res) => {
+    res.render('pagina/login'); // Renderiza login.ejs
+});
 
-// Manejo de errores 404
-app.use((req, res, next) => {
-    res.status(404).send('Página no encontrada');
+app.get('/register', (req, res) => {
+    res.render('pagina/register'); // Renderiza register.ejs
+});
+
+app.get('/categories', (req, res) => {
+    res.render('pagina/categories'); // Renderiza categories.ejs
+});
+
+app.get('/profile', (req, res) => {
+    res.render('pagina/profile'); // Renderiza profile.ejs
+});
+
+app.get('/home', (req, res) => {
+    res.render('pagina/home'); // Renderiza profile.ejs
 });
 
 // Inicia el servidor
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });

@@ -1,0 +1,191 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ff7cbc;
+    margin: 0;
+    color: #000000;
+    display: flex;
+    height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Estilos del Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #ffc0dd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.profile-info {
+    text-align: center;
+    margin-bottom: -30px;
+}
+
+.profile-info .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Caja Compacta para Progreso de Cursos */
+.courses-progress-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 220px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-height: 300px; /* Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Muestra la barra de desplazamiento vertical solo cuando sea necesario */
+}
+
+.courses-progress-container h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.course-box {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.progress {
+    height: 8px;
+    background-color: #ffc0dd;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.progress-fill {
+    background: linear-gradient(to right, #ff7cbc, #ff0080);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.progress-percentage {
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+/* Panel Principal */
+.main-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ff7cbc;
+    border-top-left-radius: 30px;
+    padding: 20px;
+    position: relative;
+}
+
+.header {
+    font-size: 24px;
+    margin-bottom: -30px;
+    margin-top: -35px;
+    text-align: center;
+    position: relative;
+}
+
+/* Botón Circular con Flecha de Regreso */
+.back-button {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background-color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button a {
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.back-button i.arrow-left::before {
+    content: '←'; /* Puedes usar un ícono o símbolo aquí */
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit-profile-form {
+    background-color: #ffc0dd;
+    padding: 35px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 96%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: none;
+    background-color: #e14c99;
+    color: #fff;
+}
+
+.btn {
+    background-color: #e14c99;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #f891c4;
+}
+
+/* Personalizar la barra de desplazamiento (opcional) */
+.courses-progress-container::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+.courses-progress-container::-webkit-scrollbar-thumb {
+    background-color: #ff7cbc; /* Color de la barra */
+    border-radius: 90px; /* Redondea la barra de desplazamiento */
+}
