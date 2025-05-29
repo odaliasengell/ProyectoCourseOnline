@@ -36,16 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // Evita que el formulario se envíe por defecto
 
         // Obtener los valores de los campos del formulario
-        const fullName = fullNameInput.value;
-        const username = usernameInput.value;
+        const fullName = fullNameInput.value.trim();
+        const username = usernameInput.value.trim();
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
-        const email = emailInput.value;
+        const email = emailInput.value.trim();
 
-        // Validar que las contraseñas coincidan
+        // 2. Validar que las contraseñas coincidan
         if (password !== confirmPassword) {
             messageDiv.textContent = 'Las contraseñas no coinciden';
-            messageDiv.style.color = 'red'; // Color rojo para el error
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        // 3. Validar el formato del correo electrónico
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(email)) {
+            messageDiv.textContent = 'Por favor ingrese un correo electrónico válido';
+            messageDiv.style.color = 'red';
+            return;
+        }
+
+        // 4. Validar la longitud de la contraseña
+        if (password.length < 6) {
+            messageDiv.textContent = 'La contraseña debe tener al menos 6 caracteres';
+            messageDiv.style.color = 'red';
             return;
         }
 

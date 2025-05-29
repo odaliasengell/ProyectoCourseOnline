@@ -35,6 +35,10 @@ app.get('/home', (req, res) => {
     res.render('pagina/home'); // Renderiza profile.ejs
 });
 
+app.get('/admin', (req, res) => {
+    res.render('pagina/admin'); // Renderiza profile.ejs
+});
+
 // Inicia el servidor
 const PORT = 3000;
 app.listen(PORT, () => {

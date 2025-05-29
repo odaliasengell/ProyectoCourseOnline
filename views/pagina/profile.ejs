@@ -27,12 +27,8 @@
             <!-- Contenedor de Progreso de Cursos -->
             <div class="courses-progress-container">
                 <h4>Progreso de Cursos</h4>
-                <div class="course-box">
-                    <span>Desarrollo personal</span>
-                    <div class="progress">
-                        <div class="progress-fill" style="width: 30%;"></div>
-                    </div>
-                    <span class="progress-percentage">30%</span>
+                <div id="courses-list" class="courses-container">
+                    <!-- Aquí se cargarán los cursos del usuario -->
                 </div>
             </div>
         </aside>
@@ -50,6 +46,9 @@
 
             <!-- Contenido Principal -->
             <section class="content">
+                <!-- Contenedor de mensaje de éxito -->
+                <div id="message-container" style="display: none; padding: 10px; margin-bottom: 10px; font-weight: bold;"></div>
+
                 <!-- Formulario de Edición de Perfil -->
                 <form class="edit-profile-form">
                     <div class="form-group">
@@ -84,6 +83,5 @@
             </section>
         </div>
     </div>
-
 </body>
 </html>

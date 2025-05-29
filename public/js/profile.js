@@ -1,6 +1,7 @@
+// Importar las funciones necesarias de Firebase
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js';
 import { getAuth, onAuthStateChanged, updatePassword, signOut } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js';
-import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js';
+import { getFirestore, doc, getDoc, setDoc, collection, getDocs, query, where } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js';
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -18,7 +19,20 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Función para cargar los datos del usuario
+// Función para mostrar el mensaje
+function showMessage(message, isSuccess = true) {
+  const messageContainer = document.getElementById("message-container");
+  messageContainer.textContent = message;
+  messageContainer.style.display = 'block';
+  messageContainer.style.color = isSuccess ? 'green' : 'red';
+
+  // Hacer desaparecer el mensaje después de 3 segundos
+  setTimeout(() => {
+    messageContainer.style.display = 'none';
+  }, 3000); // 3000 milisegundos = 3 segundos
+}
+
+// Función para cargar los datos del usuario y los cursos suscritos
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log('Usuario autenticado:', user.email);
@@ -38,6 +52,73 @@ onAuthStateChanged(auth, async (user) => {
       document.getElementById("last-name").value = userData.lastName;
       document.getElementById("username-input").value = userData.username;
       document.getElementById("email").value = userData.email;
+
+      // Cargar los cursos suscritos desde la colección 'subscriptions'
+      const coursesListDiv = document.getElementById("courses-list");
+
+      try {
+        // Consultar la colección 'subscriptions' para obtener las suscripciones del usuario
+        const subscriptionsQuery = query(collection(db, "subscriptions"), where("userId", "==", user.uid));
+        const querySnapshot = await getDocs(subscriptionsQuery);
+
+        if (querySnapshot.empty) {
+          coursesListDiv.innerHTML = '<p>No estás suscrito a ningún curso.</p>';
+        } else {
+          // Limpiar los cursos anteriores
+          coursesListDiv.innerHTML = "";
+
+          // Mostrar los cursos suscritos
+          for (const docSnapshot of querySnapshot.docs) {
+            const subscriptionData = docSnapshot.data();
+
+            // Obtener información del curso desde la colección 'courses'
+            const courseRef = doc(db, "courses", subscriptionData.courseId);
+            const courseDoc = await getDoc(courseRef);
+
+            if (courseDoc.exists()) {
+              const courseData = courseDoc.data();
+
+              // Obtener la categoría usando el categoryId
+              const categoryRef = doc(db, "categories", courseData.categoryId);
+              const categoryDoc = await getDoc(categoryRef);
+              let categoryName = "Categoría desconocida"; // Valor por defecto si no se encuentra la categoría
+
+              if (categoryDoc.exists()) {
+                const categoryData = categoryDoc.data();
+                categoryName = categoryData.name; // Asumiendo que el nombre de la categoría está en "name"
+              }
+
+              const courseElement = document.createElement("div");
+              courseElement.classList.add("course-box");
+
+              courseElement.innerHTML = `
+                <span>${courseData.name}</span>
+                <div class="course-category">
+                  <span>Categoría: ${categoryName}</span>
+                </div>
+                <div class="course-description">
+                  <span>Descripción: ${courseData.description}</span>
+                </div>
+                <div class="course-teacher">
+                  <span>Profesor: ${courseData.teacher}</span>
+                </div>
+                <div class="course-dates">
+                  <span>Fecha de inicio: ${courseData.startDate}</span>
+                  <span>Fecha de fin: ${courseData.endDate}</span>
+                </div>
+                <div class="course-seats">
+                  <span>Plazas disponibles: ${courseData.seats}</span>
+                </div>
+              `;
+
+              coursesListDiv.appendChild(courseElement);
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error al cargar las suscripciones:", error);
+        coursesListDiv.innerHTML = '<p>Hubo un error al cargar tus cursos suscritos.</p>';
+      }
     } else {
       console.log("No se encontraron datos del usuario");
     }
@@ -72,18 +153,20 @@ document.querySelector(".edit-profile-form").addEventListener("submit", async (e
       profilePic: document.getElementById("profile-pic").src
     }, { merge: true });
 
+    // Si se proporciona una nueva contraseña, actualizarla
     if (password) {
       try {
         await updatePassword(user, password);
-        console.log("Contraseña actualizada correctamente");
+        showMessage("Contraseña actualizada correctamente", true);
       } catch (error) {
         console.error("Error al actualizar la contraseña:", error);
+        showMessage("Error al actualizar la contraseña", false);
       }
     }
 
-    console.log("Datos del usuario actualizados");
+    showMessage("Datos del usuario actualizados correctamente", true);
   } else {
-    console.log("No hay usuario autenticado");
+    showMessage("No hay usuario autenticado", false);
   }
 });
 
@@ -99,9 +182,7 @@ document.getElementById("logout-btn").addEventListener("click", async () => {
   }
 });
 
-// Función para mostrar/ocultar la contraseña
-document.getElementById("show-password").addEventListener("click", () => {
-  const passwordField = document.getElementById("password");
-  const type = passwordField.type === "password" ? "text" : "password";
-  passwordField.type = type;
+// Función para volver al inicio
+document.getElementById("home-btn").addEventListener("click", () => {
+  window.location.href = "/home";
 });

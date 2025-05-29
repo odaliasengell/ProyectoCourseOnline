@@ -1,0 +1,336 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.top-panel {
+    background-color: #c93384; /* Color principal */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+.top-panel .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.top-panel .logo-container img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.top-panel .menu-container {
+    display: flex;
+    gap: 20px;
+}
+
+.button {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #c93384; /* Color principal */
+    border: 2px solid #c93384; /* Borde del botón */
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #c93384; /* Color principal */
+    color: white; /* Texto blanco al hacer hover */
+}
+
+.cancel-btn {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #F44336; /* Color de texto para cancel */
+    border: 2px solid #F44336; /* Borde rojo */
+}
+
+.cancel-btn:hover {
+    background-color: #F44336; /* Color de fondo rojo */
+    color: white; /* Texto blanco */
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #c93384; /* Color principal */
+}
+
+.modal-content form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.modal-content form input,
+.modal-content form textarea,
+.modal-content form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.modal-content form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ffffff; /* Fondo blanco */
+    color: #c93384; /* Color principal */
+    border: 2px solid #c93384; /* Borde del botón */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content form button:hover {
+    background: #c93384; /* Color principal */
+    color: white; /* Texto blanco al hacer hover */
+}
+
+/* Contenedor de categorías */
+.categories-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.category {
+    background-color: #FCE4EC; /* Fondo rosado claro */
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.category:hover {
+    transform: scale(1.05);
+}
+
+.category h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #c93384; /* Color principal */
+}
+
+/* Contenedor de cursos dentro de una categoría */
+.courses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.course {
+    background-color: #ffffff; /* Fondo blanco para cada curso */
+    border: 1px solid #ddd; /* Borde ligero */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.course:hover {
+    transform: scale(1.05);
+}
+
+.course h4 {
+    color: #c93384; /* Color principal */
+    margin-bottom: 10px;
+}
+
+.course p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.course .enroll-btn {
+    background-color: #c93384;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.course .enroll-btn:hover {
+    background-color: #9e1e6a;
+}
+
+/* Botón agregar curso */
+.category .add-course-btn {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #c93384; /* Color principal */
+    border: 2px solid #c93384; /* Borde del botón */
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category .add-course-btn:hover {
+    background-color: #c93384; /* Color principal */
+    color: white; /* Texto blanco al hacer hover */
+}
+
+/* Clases ocultas */
+.hidden {
+    display: none;
+}
+
+/* Estilos del formulario de agregar curso */
+.add-course-form,
+.add-category-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-course-form h2,
+.add-category-form h2 {
+    text-align: center;
+    color: #c93384; /* Color principal */
+}
+
+.add-course-form form,
+.add-category-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-course-form form label,
+.add-category-form form label {
+    font-weight: bold;
+}
+
+.add-course-form form input,
+.add-category-form form input,
+.add-course-form form select,
+.add-category-form form select,
+.add-course-form form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.add-course-form form button,
+.add-category-form form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #c93384; /* Color principal */
+    border: 2px solid #c93384; /* Borde del botón */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-course-form form button:hover,
+.add-category-form form button:hover {
+    background-color: #c93384; /* Color principal */
+    color: white; /* Texto blanco */
+}
+
+.add-category-form .cancel-btn {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #F44336; /* Color de texto para cancel */
+    border: 2px solid #F44336; /* Borde rojo */
+    margin-top: 10px;
+}
+
+.add-category-form .cancel-btn:hover {
+    background-color: #F44336; /* Color de fondo rojo */
+    color: white; /* Texto blanco */
+}
+
+/* Estilo para los botones de eliminar con color rosado */
+.delete-course-button,
+.delete-category-button {
+    background-color: #f06292; /* Color rosado */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo al pasar el mouse por encima del botón */
+.delete-course-button:hover,
+.delete-category-button:hover {
+    background-color: #ec407a; /* Rosado más oscuro */
+}
+
+/* Estilo para los botones cuando están deshabilitados */
+.delete-course-button:disabled,
+.delete-category-button:disabled {
+    background-color: #f7c7d9; /* Rosado muy claro */
+    cursor: not-allowed;
+}
+
+/* Estilo general para los cursos y categorías */
+.category,
+.course {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category h3,
+.course h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.category button,
+.course button {
+    margin-top: 10px;
+}
+
