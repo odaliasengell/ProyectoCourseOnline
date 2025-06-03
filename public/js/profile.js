@@ -26,10 +26,9 @@ function showMessage(message, isSuccess = true) {
   messageContainer.style.display = 'block';
   messageContainer.style.color = isSuccess ? 'green' : 'red';
 
-  // Hacer desaparecer el mensaje después de 3 segundos
   setTimeout(() => {
     messageContainer.style.display = 'none';
-  }, 3000); // 3000 milisegundos = 3 segundos
+  }, 3000);
 }
 
 // Función para cargar los datos del usuario y los cursos suscritos
@@ -37,14 +36,12 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     console.log('Usuario autenticado:', user.email);
 
-    // Obtener los datos del usuario desde Firestore
     const userRef = doc(db, "users", user.uid);
     const userDoc = await getDoc(userRef);
 
     if (userDoc.exists()) {
       const userData = userDoc.data();
 
-      // Llenar los campos del formulario con la información de Firestore
       document.getElementById("profile-pic").src = userData.profilePic || "../Imagenes/fotoperfil.png";
       document.getElementById("username").textContent = userData.firstName + " " + userData.lastName;
       document.getElementById("userhandle").textContent = "@" + userData.username;
@@ -53,39 +50,32 @@ onAuthStateChanged(auth, async (user) => {
       document.getElementById("username-input").value = userData.username;
       document.getElementById("email").value = userData.email;
 
-      // Cargar los cursos suscritos desde la colección 'subscriptions'
       const coursesListDiv = document.getElementById("courses-list");
 
       try {
-        // Consultar la colección 'subscriptions' para obtener las suscripciones del usuario
         const subscriptionsQuery = query(collection(db, "subscriptions"), where("userId", "==", user.uid));
         const querySnapshot = await getDocs(subscriptionsQuery);
 
         if (querySnapshot.empty) {
           coursesListDiv.innerHTML = '<p>No estás suscrito a ningún curso.</p>';
         } else {
-          // Limpiar los cursos anteriores
           coursesListDiv.innerHTML = "";
 
-          // Mostrar los cursos suscritos
           for (const docSnapshot of querySnapshot.docs) {
             const subscriptionData = docSnapshot.data();
-
-            // Obtener información del curso desde la colección 'courses'
             const courseRef = doc(db, "courses", subscriptionData.courseId);
             const courseDoc = await getDoc(courseRef);
 
             if (courseDoc.exists()) {
               const courseData = courseDoc.data();
 
-              // Obtener la categoría usando el categoryId
               const categoryRef = doc(db, "categories", courseData.categoryId);
               const categoryDoc = await getDoc(categoryRef);
-              let categoryName = "Categoría desconocida"; // Valor por defecto si no se encuentra la categoría
+              let categoryName = "Categoría desconocida";
 
               if (categoryDoc.exists()) {
                 const categoryData = categoryDoc.data();
-                categoryName = categoryData.name; // Asumiendo que el nombre de la categoría está en "name"
+                categoryName = categoryData.name;
               }
 
               const courseElement = document.createElement("div");
@@ -122,11 +112,9 @@ onAuthStateChanged(auth, async (user) => {
     } else {
       console.log("No se encontraron datos del usuario");
     }
-  } else {
-    // Si no hay usuario autenticado, redirigir al login solo si no es la página de home
-    if (!window.location.pathname.includes('home')) {
-      window.location.href = "/login";
-    }
+  } else if (!window.location.pathname.includes('home')) {
+    // ✅ Corrección aquí: else if combinado
+    window.location.href = "/login";
   }
 });
 
@@ -143,7 +131,6 @@ document.querySelector(".edit-profile-form").addEventListener("submit", async (e
   const user = auth.currentUser;
 
   if (user) {
-    // Actualizar los datos del usuario en Firestore
     const userRef = doc(db, "users", user.uid);
     await setDoc(userRef, {
       firstName,
@@ -153,7 +140,6 @@ document.querySelector(".edit-profile-form").addEventListener("submit", async (e
       profilePic: document.getElementById("profile-pic").src
     }, { merge: true });
 
-    // Si se proporciona una nueva contraseña, actualizarla
     if (password) {
       try {
         await updatePassword(user, password);
@@ -175,7 +161,6 @@ document.getElementById("logout-btn").addEventListener("click", async () => {
   try {
     await signOut(auth);
     console.log("Sesión cerrada correctamente");
-    // Redirigir a la página de home tras cerrar sesión
     window.location.href = "/home";
   } catch (error) {
     console.error("Error al cerrar sesión:", error);
