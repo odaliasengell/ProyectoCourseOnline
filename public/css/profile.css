@@ -50,18 +50,39 @@ body {
     max-width: 220px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     text-align: center;
-    max-height: 300px; /* Ajusta esta altura según tus necesidades */
-    overflow-y: auto; /* Muestra la barra de desplazamiento vertical solo cuando sea necesario */
+    max-height: 300px;
+    overflow-y: auto;
 }
 
+/* Título de la caja de progreso */
 .courses-progress-container h4 {
     font-size: 16px;
     margin-bottom: 10px;
 }
 
+/* Estilo para la lista de cursos */
+#courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilos para cada caja de curso */
 .course-box {
-    margin-bottom: 15px;
+    background-color: #f8f8f8;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 14px;
+    color: #333;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.course-box h5 {
+    margin: 0;
+    font-size: 16px;
+    color: #e14c99;
 }
 
 .progress {
@@ -69,7 +90,7 @@ body {
     background-color: #ffc0dd;
     border-radius: 10px;
     position: relative;
-    margin-bottom: 5px;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -82,8 +103,8 @@ body {
 
 .progress-percentage {
     font-size: 12px;
-    display: inline-block;
     margin-top: 5px;
+    color: #666;
 }
 
 /* Panel Principal */
@@ -180,64 +201,12 @@ body {
     background-color: #f891c4;
 }
 
-/* Personalizar la barra de desplazamiento (opcional) */
+/* Personalizar la barra de desplazamiento */
 .courses-progress-container::-webkit-scrollbar {
-    width: 12px; /* Ancho de la barra de desplazamiento */
+    width: 12px;
 }
 
 .courses-progress-container::-webkit-scrollbar-thumb {
-    background-color: #ff7cbc; /* Color de la barra */
-    border-radius: 90px; /* Redondea la barra de desplazamiento */
-}
-
-/* Estilos adicionales para el contenedor de cursos */
-.courses-progress-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 220px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-height: 300px; /* Ajusta esta altura según tus necesidades */
-    overflow-y: auto; /* Muestra la barra de desplazamiento vertical solo cuando sea necesario */
-}
-
-/* Estilo para la lista de cursos */
-#courses-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Estilos para cada caja de curso */
-.course-box {
-    background-color: #f8f8f8;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    color: #333;
-    text-align: left;
-}
-
-.course-box h5 {
-    margin: 0;
-    font-size: 16px;
-    color: #e14c99;
-}
-
-.course-box .progress {
-    margin-top: 10px;
-}
-
-.course-box .progress-fill {
-    background: linear-gradient(to right, #ff7cbc, #ff0080);
-}
-
-.course-box .progress-percentage {
-    margin-top: 5px;
-    font-size: 12px;
-    color: #666;
+    background-color: #ff7cbc;
+    border-radius: 90px;
 }
