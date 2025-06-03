@@ -56,3 +56,5 @@ function checkAuthenticationAndRedirect(redirectTo) {
         window.location.href = '/login'; // Redirige al login si el usuario no está autenticado
     }
 }
+
+console.log("hola")
