@@ -40,7 +40,7 @@ app.get('/admin', (req, res) => {
 });
 
 // Inicia el servidor
-const PORT = 3000;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Servidor iniciado en http://localhost:${PORT}`);
 });
