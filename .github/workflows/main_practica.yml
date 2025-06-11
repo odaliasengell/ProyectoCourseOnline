@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy JAR app to Azure Web App - practica
+name: Deploy Node.js App to Azure Web App - practica
 
 on:
   push:
@@ -10,57 +7,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
-    permissions:
-      contents: read #This is required for actions/checkout
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Java version
-        uses: actions/setup-java@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          java-version: '17'
-          distribution: 'microsoft'
+          node-version: '18'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Install dependencies
+        run: npm install
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
-
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: java-app
-      
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_BCC1CC34057E4DDB9929FD8B8EAA3664 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F41E6BC1BCAE42A3972CCADF7B0E7CEC }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_786AEEF81EFA40EB819FB324DA2EB521 }}
+      - name: Build app (opcional)
+        run: npm run build || echo "no build step"
 
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@v2
         with:
-          app-name: 'practica'
-          slot-name: 'Production'
-          package: '*.jar'
-          
+          app-name: 'practica' # asegúrate que coincide con el nombre de tu App Service en Azure
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          package: .
