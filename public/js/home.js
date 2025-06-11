@@ -57,4 +57,4 @@ function checkAuthenticationAndRedirect(redirectTo) {
     }
 }
 
-console.log("hola Ing Israel")
+console.log("hola kenedy")
